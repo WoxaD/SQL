@@ -50,15 +50,4 @@ public class LoginTest {
         loginPage.validLogin(authInfo);
         loginPage.getErrorVisibility();
     }
-
-    @Test
-    void shouldShowErrorWhenRandomVerificationCode() {
-        var loginPage = open("http://localhost:9999", LoginPage.class);
-        var authInfo = DataHelper.getAuthInfoWithTestData();
-        var verificationPage = loginPage.validLogin(authInfo);
-        verificationPage.verifyVerificationPageVisibility();
-        var verificationCode = DataHelper.generateRandomVerificationCode().getCode();
-        verificationPage.validVerify(verificationCode);
-        verificationPage.getError();
-    }
 }
